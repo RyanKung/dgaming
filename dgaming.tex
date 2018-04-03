@@ -1,4 +1,5 @@
 \documentclass[twocolumn]{article}
+\usepackage{listings}
 \usepackage{float}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -55,7 +56,17 @@ Since some abstraction of blockchain is based on the separation logic or $\pi ca
   at \mathbb{[} time \mathbb{]}t = t
 \end{gather}
 
-Unlike other issues we met in pure functional world, there should be only one types of monad in blockchain, the STMonad, $STMonad$ is a Monad type for status, thus except status changes, all other functions should be pure which means no side-effect, which means we can build an infered system or a $LENS$\cite {lens} above it.
+Unlike other issues we met in pure functional world, there should be only one types of monad in blockchain, the STMonad, $STMonad$ is a Monad type for status, thus except status changes, all other functions should be pure which means no side-effect, which means we can build an infered system or a $LENS$\cite {lens} above it. A Lens should have two property, $over$, and $view$.
+
+\lstset{language=Haskell}
+\begin{lstlisting}
+data Lens a b = Lens
+    { view :: a -> b
+    , over :: (b -> b) -> (a -> a)
+  }
+\end{lstlisting}
+
+A concrete example based on Solidity is, for each functions, if it's a pure function which means nor cost gas or cause side-effect on blokchain it can be infered based on ABI, it's a $view$, otherwise it's a $over$ which means you have to send a transaction to modified the status of chain.
 
 
 \section{Pure Functional Solidity}
