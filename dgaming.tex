@@ -32,7 +32,7 @@ On classic Nash Equilibrium, we modeling it with some behaviors table, and proof
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\linewidth]{img/lamportts.png}
+  \includegraphics[width=0.5\linewidth]{img/lamportts.png}
   \caption{Lamport Timestamp}
 \end{figure}
 
@@ -44,7 +44,11 @@ The distributed equilibrium seeking strategy(DESS) was given by \cite{7888532}:
   \dot{x} = k_i \frac {\partial f_i}{\partial x_i}(y_i), i \in \mathbb{N}
 \end{gather}
 
-$(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There are some descendent work based on it, but most of them are analytically studied based on certain condition, ignores nonnegligible communication or transaction cost, which is non-ignorable in blockchain and other distributed system. In blockchain case, we can compose measurement function and DESS together, then the strategy can be present as $m(\delta, \dot{x})$. And obviously, there should be existed some relationship between Nash-eq point and $\delta$, such as  $m(\delta_a, \dot{x}) > m(\delta_b, \dot{x}) \iff a > b$. 
+$(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There are some descendent work based on it, but most of them are analytically studied based on certain condition, ignores nonnegligible communication or transaction cost, which is non-ignorable in blockchain and other distributed system. In blockchain case, we can compose measurement function and DESS together, then the strategy can be present as $m(\delta, \dot{x})$. And obviously, there should be existed some relationship between Nash-eq point and $\delta$, such as:
+
+\begin{gather}
+  m(\delta_a, \dot{x}) > m(\delta_b, \dot{x}) \vdash a > b
+\end{gather}
 
 \section{Infered perfect information}
 
