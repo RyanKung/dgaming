@@ -1,0 +1,48 @@
+\begin{thebibliography}{1}
+
+\bibitem{lens}
+Control.lens.tutorial.
+
+\bibitem{linearblockchain}
+Linear types can change the blockchain!
+
+\bibitem{ethereum}
+Vitalik Buterin.
+\newblock A next-generation smart contract and decentralized application
+  platform, 2014.
+
+\bibitem{ElliottHudak97:Fran}
+Conal Elliott and Paul Hudak.
+\newblock Functional reactive animation.
+\newblock In {\em International Conference on Functional Programming}, 1997.
+
+\bibitem{time-clocks-ordering-events-distributed-system}
+Leslie Lamport.
+\newblock Time, clocks and the ordering of events in a distributed system.
+\newblock pages 558--565, July 1978.
+
+\bibitem{dai}
+Mikael~Brockman Nikolai~Mushegian, Daniel~Brockman.
+\newblock Reference implementation of the decentralized dai stablecoin issuance
+  system, 2 2018.
+
+\bibitem{8029164}
+L.~Wang, S.~Liang, and Y.~Hong.
+\newblock Discrete-time algorithm for distributed nash equilibrium seeking of a
+  class of aggregative games.
+\newblock In {\em 2017 36th Chinese Control Conference (CCC)}, pages
+  11325--11330, July 2017.
+
+\bibitem{7888532}
+M.~Ye and G.~Hu.
+\newblock Distributed nash equilibrium seeking by a consensus based approach.
+\newblock {\em IEEE Transactions on Automatic Control}, 62(9):4811--4818, Sept
+  2017.
+
+\bibitem{8093754}
+M.~Ye and G.~Hu.
+\newblock Distributed nash equilibrium seeking in multiagent games under
+  switching communication topologies.
+\newblock {\em IEEE Transactions on Cybernetics}, PP(99):1--10, 2017.
+
+\end{thebibliography}
