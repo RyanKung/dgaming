@@ -47,12 +47,15 @@ $(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There are s
 
 \section{Infered perfect information}
 
-Unlike classic distributed system, Blockchain can be seems as a time step function, or a FRP issue which can be abstract as\cite{ElliottHudak97:Fran}, where blockchain Status can be also be abstract as $STMonad$ like MAKERDao\cite{dai}'s work:
+Unlike classic distributed system,
+Since some abstraction of blockchain is based on the separation logic or $\pi calculis$ \cite{linearblockchain}, it can easily be seems as a time step function, or a FRP issue which can be abstract as\cite{ElliottHudak97:Fran}, where blockchain Status can be also be abstract as $STMonad$ like MAKERDao\cite{dai}'s work:
 
 \begin{gather}
-  time: Status_{time}\\
+  time: STMonad_{time}\\
   at \mathbb{[} time \mathbb{]}t = t
 \end{gather}
+
+Unlike other issues we met in pure functional world, there should be only one types of monad in blockchain, the STMonad, $STMonad$ is a Monad type for status, thus except status changes, all other functions should be pure which means no side-effect, which means we can build an infered system or a $LENS$\cite {lens} above it.
 
 
 \section{Pure Functional Solidity}
