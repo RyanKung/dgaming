@@ -14,6 +14,7 @@
 \SetWatermarkScale{1}
 \definecolor{pagecolor}{rgb}{1,0.98,0.9}
 \pagecolor{pagecolor}
+\setlength\parskip{.5\baselineskip}
 \author{Ryan J. Kung \\ryankung@ieee.org\\Member, IEEE Blockchain Community }
 \title{Inferred based Distributed Gaming, Nash Equilibrium}
 \begin{document}
@@ -52,7 +53,7 @@ $(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There are s
   m(\delta_a, \dot{x}) > m(\delta_b, \dot{x}) \vdash a > b
 \end{gather}
 
-\section{Infered perfect information}
+\section{Infered information}
 
 Unlike classic distributed system,
 Since some abstraction of blockchain is based on the separation logic or $\pi calculis$ \cite{linearblockchain}, it can easily be seems as a time step function, or a FRP issue which can be abstract as\cite{ElliottHudak97:Fran}, where blockchain Status can be also be abstract as $STMonad$ like MAKERDao\cite{dai}'s work:
@@ -62,7 +63,7 @@ Since some abstraction of blockchain is based on the separation logic or $\pi ca
   at \mathbb{[} time \mathbb{]}t = t
 \end{gather}
 
-Unlike other issues we met in pure functional world, there should be only one types of monad in blockchain, the STMonad, $STMonad$ is a Monad type for status, thus except status changes, all other functions should be pure which means no side-effect, which means we can build an infered system or a $LENS$\cite {lens} above it. A Lens should have two property, $over$, and $view$.
+Unlike other issues we met in pure functional world, there should be only one types of monad in blockchain, the STMonad, $STMonad$ is a Monad type for status, thus except status changes, all other functions should be pure which means no side-effect, which means we can build an infered system or a $LENS$\cite {lens} above it. A Lens should have two property, $over$, and $view$. 
 
 \lstset{language=Haskell}
 \begin{lstlisting}
@@ -72,11 +73,20 @@ data Lens a b = Lens
   }
 \end{lstlisting}
 
-A concrete example based on Solidity is, for each functions, if it's a pure function which means nor cost gas or cause side-effect on blokchain it can be infered based on ABI, it's a $view$, otherwise it's a $over$ which means you have to send a transaction to modified the status of chain.
+A concrete example based on Solidity is, for each functions, if it's a pure function which means nor cost gas or cause side-effect on blokchain it can be infered based on ABI, it's a $view$, otherwise it's a $over$ which means you have to send a transaction to modified the status of chain. From $(2)$ we know that the distributed nash-equilibrim point is based on the transaction param $\delta$, thus we can assume that $Lens.view$, and $Lens.over$ is some paritial function based on $\delta$. We know that if $view$ is a pure function so that $\lim \delta$ is 0, which means if a client is well connected to the network, the $\delta$ is negligible for that, since for $over$ case, you can only shift $\delta$ by provide a high $tranasction\ price$ (gas price for ethereum).
 
 
-\section{Pure Functional Solidity}
-blalbal
+So since classic distributed gaming may transfer the gaming from perfect information to imperfect. But if it's blockchain based, since $over$ is working as eventual consistency\cite{consis} but the status of blockchain can be seems as strong consistency\cite {Consistent}. On $view$ phase of gaming, when player $i$ make decision on $STMonad time_0$, the information of $Monat$ is perfect. For phase $over$, players may choose to pay high price as strategy to get more payoff, since it's based on consistency information of blockchain, we can also say that the $over$ phase is also perfect information gaming. So for a gaming we wished to have a fixed nash equilibrium point, it should be designed as all data in public and no private status.
+
+\section {Zero Knowledge Gaming}
+
+unfinished
+
+\section {Concrete Implementation}
+
+In the Go!hamster, the game we designed based on this paper. We abstract the gaming activity as mining, and designed a series of numerical system, which can maintain the value of user actor by a fixed and well-designed nash equilibrium pointed. The ERC20 standard was extended with a built-in transparen exchange, which makes all gaming actor can be limited inside the blockchain or contract. And based on ERC721, we designed a reward system to keep player can get payoff if they act around the nash-eq point.
+
+For Exchangeable ERC20 and so on the Exchangeable ERC721, all match stuffs is based on infered system, which means players can check the full depth of ticker for determining the best price they should pay for tokens.
 
 \bibliographystyle{plain}
 \bibliography{dgaming}
