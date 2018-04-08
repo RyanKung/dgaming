@@ -22,7 +22,7 @@
 % \tableofcontents
 \section{Abstract}
 
-Since the introduction of Ethereum on 2014\cite{ethereum}, It brought many DApps and DGames, such as CryptoKitty, Etheremon and Decentraland. Most of them are running into issues addressed to the efficiency of BlockChain implementation, It's too expensive to store data and status in BlockChain like what traditional games does, And it's also can't be worked as a real-time or parity-real-time game during to the delay of transactions. \cite{mrx05}
+Since the introduction of Ethereum on 2014\cite{ethereum}, It brought many DApps and DGames, such as CryptoKitty, Etheremon and Decentraland. Most of them are running into issues addressed to the efficiency of BlockChain implementation, It's too expensive to store data and status in BlockChain like what traditional games does, And it's also can't be worked as a real-time or parity-real-time game because of the delay of transactions. \cite{mrx05}
 
 In this paper, we will studied and discussed how should be a distributed game work on a blockchain based distributed system. First, we discussed distributed nash equilibrium problem, and try to solve the problem with Infered System, finally we will discuss about Zero-knowledge proof as futrue work.
 
@@ -80,13 +80,44 @@ So since classic distributed gaming may transfer the gaming from perfect informa
 
 \section {Zero Knowledge Gaming}
 
-unfinished
+Such as we can formalize blockchain as a Monad (A monoid in the category of endofunctors), We can also describe abstractly the cryptology part of bitcoin as a cyclic subgroup of elliptic curve group over a primer finite field, which is also the the key of zk-SNARKs. There is an concrete implementation in our game for providing zero-knowledge proofing based on the infered system and hash algorithms, It's works like other blockchain implementation does \cite{zcash}. But what further more is, we tried developed algorithms based on Abstract Algebra Type and Isomorphism or Bijection mapping.
 
-\section {Concrete Implementation}
+The Abstract Algebra Type made an allowance for playing high abstract part of calculators in a more intuitionistic way. Such as when we try to implement ethereum's pubkey/privatekey algorithm, we can just simply write as\cite{klefki}:
 
-In the Go!hamster, the game we designed based on this paper. We abstract the gaming activity as mining, and designed a series of numerical system, which can maintain the value of user actor by a fixed and well-designed nash equilibrium pointed. The ERC20 standard was extended with a built-in transparen exchange, which makes all gaming actor can be limited inside the blockchain or contract. And based on ERC721, we designed a reward system to keep player can get payoff if they act around the nash-eq point.
+\lstset{language=Python}
+\begin{lstlisting}
+  def pubkey(priv: CF) -> ECG:
+      return ECG(G @ priv)
+\end{lstlisting}
 
-For Exchangeable ERC20 and so on the Exchangeable ERC721, all match stuffs is based on infered system, which means players can check the full depth of ticker for determining the best price they should pay for tokens.
+Where CF and ECG is Finite Field Cyclic Group and Elliptic Curve Group of Secp256k1. By the property of cyclic subgroup, we can easily improve the zero knowledge gaming as some endomorphism feature.
+
+\begin{gather}
+  A + B = X \\
+  A + C = X \\
+  C \neq X
+\end{gather}
+
+\section {More Concrete}
+
+In the Go!hamster, the game we designed based on this work. We abstract the gaming activity as mining, and designed a series of numerical system, which can maintain the value of user actor by a fixed and well-designed nash equilibrium pointed. 
+\subsection {Decentralized Marking}
+
+The ERC20 standard was extended with a built-in transparen exchange, which makes all gaming actor can be limited inside the blockchain or contract. And based on ERC721, we designed a reward system to keep player can get payoff if they act around the nash-eq point. For Exchangeable ERC20 and so on the Exchangeable ERC721, all matching stuffs is based on infered system, which means players can check the full depth of ticker for determining the best price they should pay for tokens.
+
+Functions of smart contract are separated into Functor and Monad. Functors are working based on pre-infered system, and Monads are based on infered system, which is actually presented a sequence of status.
+
+\subsection {Infered Token Balance}
+
+On out implementation of Gaming Token, we designed an infered based auto expended rate. The expended rate is based on $\delta$ and $time$ of blockchain, which is bounded on the nash equilibrim of what the token price should be during the game processing.
+
+\subsection {Gaming Versus Mining}
+
+The most obviously case of nash-eq case on blockchain world is bitcoin mining\cite{bitcoin}, we can easily build an game matrix model on bitcoin mining behavior, the relationship is between market force, difficult rate, and hash rate. And in game Go!hamster, actors can pay game token for wining reward, more token they paid, higher rewarding rate they got, which is working as a simulation of how bitcoin mining works.
+
+\section {Conclusion}
+
+Addressed to the strong consistency property of blockchain, A game can have a certain nash equilibrium point, if the side-effects and pure-functions are in separation. Though there is alot of limitation on Ethereum and solidity itself, a real-time game, like RPG or Action game can be still build on a monad based and zero-knowledge based infered system.
 
 \bibliographystyle{plain}
 \bibliography{dgaming}
