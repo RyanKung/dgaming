@@ -24,12 +24,28 @@
 
 Since the introduction of Ethereum on 2014\cite{ethereum}, It brought many DApps and DGames, such as CryptoKitty, Etheremon and Decentraland. Most of them were running into issues addressed to the congestion of transaction which is limitation of how Ethereum implemented. Storing on-chain data is too expensive for games needs high interaction, and may cause may problem, one of them is that gaming on distributed system may cause harder to find out a fear nash equilibrium point for numerical designing, and the nonnegligible delay of tranasction caused may limited the interactive rate of game processing.
 
-In this paper, we studied and discussed how should a distributed game works on blockchain based distributed system. First, we discussed distributed nash equilibrium problem on certain condition, then we introduced an infered based system based on an abstraction which formalize blockchain with STMonad and Lens application, further, we discussed how to composed infered system with zero-knowledge proof for refining.
+In this paper, we studied and discussed how should a distributed game works on blockchain based distributed system. First, we discussed distributed nash equilibrium problem on certain condition, then we introduced an infered based system based on an abstraction which formalize blockchain with STMonad and Lens application, further, we discussed how to composed infered system with zero-knowledge proof for game refining.
 
 \section{Distributed Nash-Eq}
 
-Like DApps, DGaming is a series of Gaming Behaviors and Strategis which is Decentralized and Distributed. On Lamport's defination on 1978\cite{time-clocks-ordering-events-distributed-system}, A Gaming is Distributed if the message transaction delay is not negligible compared to the time between event in classic gaming behavior. The issues in traditional gaming theory may easily lead us run into trouble if it's distributed, such as nash equilibrium simulation or prisoner's dilemma problem.
-On classic Nash Equilibrium, we modeling it with some behaviors table, and proof that for each strategy on game $(S, f)$, and got A strategy profile which is Nash Equilibrium. But on distributed case, the issue is that the event of strategy is not effect immediately, nonnegligible delay of transaction on system may cause N-Eq point out of expectation.
+Like traditional Gaming on game theory, we defined DGaming as a series of Gaming Behaviors and Strategis which is Distributed. With Lamport's defination on 1978\cite{time-clocks-ordering-events-distributed-system}, A Gaming is Distributed if the message transaction delay is not negligible compared to the time between event in classic gaming behavior. The issues in traditional gaming theory may easily lead us run into trouble if it's distributed, such as nash equilibrium simulation or prisoner's dilemma problem.
+
+On classic Nash Equilibrium, we seeking out the nash-eq point by analyze it with action matrix, and proof that for each strategy on game $(S, f)$, and got A strategy profile which is Nash Equilibrium. But on distributed case, the issue is that the event of strategy is not effect immediately, nonnegligible delay of transaction on system may cause N-Eq point out of expectation.
+
+For example, we discuss a classic game as:
+\begin{center}
+\begin{tabular}{c|c|c|}
+  & L & R \\
+  \hline
+  U & (1,3)&(-3,0)\\
+  \hline
+  M & (-2,0)&(1,3)\\
+  \hline
+  D & (0,1)&(0,1)\\
+\end{tabular}
+\end{center}
+
+When we discuss pure strategies, we can easily figure out that the nash-eq strategy is $D$, but in this case player $i$ is very sensitive on the uncertainty of $s_{-i}$
 
 
 
