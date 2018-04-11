@@ -67,7 +67,7 @@ In distributed game, for example an distributed game based on a paxos based syst
 \end{tabular}
 \end{center}
 
-On this game, players can choose from strategy space ${Wait, Action}$, and as what prisoner's dilemma presented to us, all players may choose $W$. Which entangled the gaming into a series complicated case, and break perfect information gaming in to imperfect.Actually, Nash equilibrium seeking under communication networks is as tracing increasing attension resently, Some seeking work is about paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754}. In this paper, we considered distributed Nash equilibrium with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, and Denote $f_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a measurement function $m = f(\delta, i)$ which is means how the information is prefect for player $i$.
+On this game, players can choose from strategy space ${Wait, Action}$, and as what prisoner's dilemma presented to us, all players may choose $W$. Which entangled the gaming into a series complicated case, and break perfect information gaming in to imperfect.Actually, Nash equilibrium seeking under communication networks is as tracing increasing attension resently, Some seeking work is about paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754}. In this paper, we considered distributed Nash equilibrium with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, and Denote $f_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$.
 
 The distributed equilibrium seeking strategy(DESS) was given by \cite{7888532}:
 \begin{gather}
@@ -77,7 +77,7 @@ The distributed equilibrium seeking strategy(DESS) was given by \cite{7888532}:
 $(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There are some descendent work based on it, but most of them are analytically studied based on certain condition, ignores nonnegligible communication or transaction cost, which is non-ignorable in blockchain and other distributed system. In blockchain case, we can compose measurement function and DESS together, then the strategy can be present as $m(\delta, \dot{x})$. And obviously, there should be existed some relationship between Nash-eq point and $\delta$, such as:
 
 \begin{gather}
-  m(\delta_a, \dot{x}) > m(\delta_b, \dot{x}) \vdash a > b
+  \sigma(\delta_a, \dot{x}) > \sigma(\delta_b, \dot{x}) \vdash a > b
 \end{gather}
 
 \section{Infered information}
