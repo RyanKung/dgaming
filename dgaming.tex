@@ -90,7 +90,7 @@ Since some formalization of blockchain is based on the separation logic or $\pi 
   at \mathbb{[} time \mathbb{]}t = t
 \end{gather}
 
-Unlike other issues we met in pure functional world, there should be only one types of monad in blockchain, the STMonad, $STMonad$ is a Monad type for status, thus except status changes, all other functions should be pure which means no side-effect, which means we can build an infered system or a $LENS$\cite {lens} above it. A Lens should have two property, $over$, and $view$. 
+In blockchain, there is only one types of monad, the STMonad, $STMonad$ is a Monad type for status, thus except status changes, all other functions should be pure which means no side-effect, which means we can build an infered system or a $LENS$\cite {lens} above it. A Lens should have two property, $over$, and $view$. 
 
 \lstset{language=Haskell}
 \begin{lstlisting}
