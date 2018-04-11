@@ -45,8 +45,7 @@ For example, we discuss a classic game as:
 \end{tabular}
 \end{center}
 
-When we discuss pure strategies, we can easily figure out that the nash-eq strategy is $D$, but in this case player $i$ is very sensitive on the uncertainty of $s_{-i}$
-
+With Repeated advantage solution, we can simply figure out that the nash-eq strategy is $(U, L)$, but this game is based on a hypothesis that player $i$ shares same knowledge about payoff and strategy space. If players are sensitive on the uncertainty of $s_{-1}$, they may not choose the rational strategy, like if about \%1 players choose $R$, then $D$ is better than $U$.
 
 
 \begin{figure}[H]
@@ -56,7 +55,19 @@ When we discuss pure strategies, we can easily figure out that the nash-eq strat
 \end{figure}
 
 
-In a distributed nash equilibrium case, for example an distributed gaming system build on a simple-paxos based distributed system, actors may try to figure out best response by mining unconfirmed messages as more as they can, which entangled the gaming into a series complicated case, and break perfect information gaming in to imperfect.Actually, Nash equilibrium seeking under communication networks is as tracing increasing attension resently, Some seeking work is about paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754}. In this paper, we considered distributed Nash equilibrium with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, and Denote $f_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a measurement function $m = f(\delta, i)$ which is means how the information is prefect for player $i$.
+In distributed game, for example an distributed game based on a paxos based system. Addressed to the nonnegligible delay, player $i$ may upfront know $i'$ and action hysteretic, which may cause the nash-equilibrium become highly dependents on the distributed network. Figure 1 is showing that how events can be trigger and measured on a distributed system. Actually, on a Dgame all players may tried to mining more informations and action as later as they can, the situation may looks like Prisoners’ Dilemma:
+
+\begin{center}
+\begin{tabular}{c|c|c|}
+  & W & A \\
+  \hline
+  W & (1,1)&(-1, 2)\\
+  \hline
+  A & (2,-1)&(0,0)\\
+\end{tabular}
+\end{center}
+
+On this game, players can choose from strategy space ${Wait, Action}$, and as what prisoner's dilemma presented to us, all players may choose $W$. Which entangled the gaming into a series complicated case, and break perfect information gaming in to imperfect.Actually, Nash equilibrium seeking under communication networks is as tracing increasing attension resently, Some seeking work is about paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754}. In this paper, we considered distributed Nash equilibrium with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, and Denote $f_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a measurement function $m = f(\delta, i)$ which is means how the information is prefect for player $i$.
 
 The distributed equilibrium seeking strategy(DESS) was given by \cite{7888532}:
 \begin{gather}
