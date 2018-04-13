@@ -76,9 +76,11 @@ On this game, players can choose from strategy space ${Wait, Action}$, and as wh
 
 T$(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There exist Some seeking work on it with paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754} building on certain conditions and developed on the discrete-time stochastic algorithm\cite{928588} which the players are supposed to be capable of communicating with each other via an undirected and connected communication graph\cite{7888532}. 
 
-In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, and Denote $f_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $=sigma(\delta, \dot{x})$, and we have.
-
 \section{Infered Game}
+
+In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, all player $i$ can well access actions of $-i$. We denoted $u_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $=sigma(\delta, \dot{x})$.
+
+\
 
 An infered Game is that for a game (S, f), all players $i$ shares same knowledge space about $S$, $u_{i}(s)$, and $s_{-i}$ on  Lamport Timestamp $\tau$.
 Unlike classic distributed system,
