@@ -21,7 +21,6 @@
 \maketitle
 % \tableofcontents
 \section{Abstract}
-
 Since the introduction of Ethereum on 2014\cite{ethereum}, It brought many DApps and DGames, such as CryptoKitty, Etheremon and Decentraland. Most of them were running into issues addressed to the congestion of transaction which is limitation of how Ethereum implemented. Storing on-chain data is too expensive for games needs high interaction, and may cause may problem, one of them is that gaming on distributed system may cause harder to find out a fear nash equilibrium point for numerical designing, and the nonnegligible delay of tranasction caused may limited the interactive rate of game processing.
 
 In this paper, we studied and discussed how should a distributed game works on blockchain based distributed system. First, we discussed distributed nash equilibrium problem on certain condition, then we introduced an infered based system based on an abstraction which formalize blockchain with STMonad and Lens application, further, we discussed how to composed infered system with zero-knowledge proof for game refining.
@@ -67,18 +66,17 @@ In distributed game, for example an distributed game based on a paxos based syst
 \end{tabular}
 \end{center}
 
-On this game, players can choose from strategy space ${Wait, Action}$, and as what prisoner's dilemma presented to us, all players may choose $W$. Which entangled the gaming into a series complicated case, and break perfect information gaming in to imperfect.Actually, Nash equilibrium seeking under communication networks is as tracing increasing attension resently, Some seeking work is about paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754}. In this paper, we considered distributed Nash equilibrium with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, and Denote $f_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$.
+On this game, players can choose from strategy space ${Wait, Action}$, and as what prisoner's dilemma presented to us, all players may choose $W$. Which entangled the gaming into a series complicated case, and break perfect information gaming in to imperfect.
 
-The distributed equilibrium seeking strategy(DESS) was given by \cite{7888532}:
+
+ Nash equilibrium seeking under communication networks is as tracing increasing attension resently, The distributed equilibrium seeking strategy(DESS) was given by \cite{7888532}:
 \begin{gather}
   \dot{x} = k_i \frac {\partial f_i}{\partial x_i}(y_i), i \in \mathbb{N}
 \end{gather}
 
-$(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There are some descendent work based on it, but most of them are analytically studied based on certain condition, ignores nonnegligible communication or transaction cost, which is non-ignorable in blockchain and other distributed system. In blockchain case, we can compose measurement function and DESS together, then the strategy can be present as $m(\delta, \dot{x})$. And obviously, there should be existed some relationship between Nash-eq point and $\delta$, such as:
+T$(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There exist Some seeking work on it with paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754} building on certain conditions and developed on the discrete-time stochastic algorithm\cite{928588} which the players are supposed to be capable of communicating with each other via an undirected and connected communication graph\cite{7888532}. 
 
-\begin{gather}
-  \sigma(\delta_a, \dot{x}) > \sigma(\delta_b, \dot{x}) \vdash a > b
-\end{gather}
+In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, and Denote $f_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $=sigma(\delta, \dot{x})$, and we have.
 
 \section{Infered Game}
 
