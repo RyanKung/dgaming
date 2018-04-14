@@ -137,10 +137,52 @@ And the total supply $\mathbb{S}$ on lamport timestamp $t$ is:
   \mathbb{S}(t) \approx \sum_{i=0}^t E(t)
 \end{gather}
 
+The utility function of Selling $q$ Premier or Reward token on price $p$ with cost $c$ can be present as:
+
+\begin{gather}
+  u(q_i) = q_ip(q) - c_i(q_i)\\
+  p(q_i) = f(\mathbb{S}(t))
+\end{gather}
+
+Like cournot duopoly model, with a two player $\{1, 2\}$ gaming, we can directly give the nash equilibrim of $S$ is:
+
+\begin{gather}
+  \dot{q}_1 = \dot{q}_2 = \frac{1-c}{3}
+\end{gather}
+
 
 \section{Infered Game}
 
-In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, all player $i$ can well access actions of $-i$. We denoted $u_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $=sigma(\delta, \dot{x})$.
+
+On case on time $t$, we have a active matrix, player 1, 2 can Gaming, Holding or Selling. Addressed to formular $(2), (3), (4)$, if 1, 2 all do gaming, they will get less payoff, and due to the inflation rate, if 1, 2 just holding, they will lose money which relative to. And if 1 is gaming, and 2 is Selling, because of the decreasing of total supply, seller will get more profit:
+
+\begin{gather}
+\begin{tabular}{c|c|c|c|}
+  & G & H &S\\
+  \hline
+  G & (1, 1)&(2, -1)&(2,2)\\
+  \hline
+  H & (1, 2)&(-1, -1)&(-2, 1)\\
+  \hline
+  S & (2,2)&(1,0)&(0, 0)\\
+\end{tabular}
+\end{gather}
+
+With PAS:
+
+\begin{gather}
+\begin{tabular}{c|c|c|}
+  & G &S\\
+  \hline
+  G & (1, 1)&(2,2)\\
+  \hline
+  S & (2,2)&(0, 0)\\
+\end{tabular}
+\end{gather}
+
+In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, all player $i$ can well access actions of $-i$. We define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $sigma(\delta, \dot{x})$.
+
+If $\delta$ for DGame $(18)$ is negligible, $(\sigma(G), \sigma(S))$ should be $(\frac{1}{2}, \frac{1}{2})$, otherwise player $i$ may known the action $-i$ does early, which may shifts the distribution to $(0, 1)$. And if most of players does same, it will fall into a zero-sum game trap. We introduce infered game for solving this problem.
 
 An infered Game is that for a game (S, f), all players $i$ shares same knowledge space about $S$, $u_{i}(s)$, and $s_{-i}$ on  Lamport Timestamp $\tau$.
 Unlike classic distributed system,
