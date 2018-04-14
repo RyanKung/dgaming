@@ -80,7 +80,34 @@ T$(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There exis
 
 In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, all player $i$ can well access actions of $-i$. We denoted $u_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $=sigma(\delta, \dot{x})$.
 
-\
+In the game we designed, there are two tokens:
+
+{\bfseries Premier}: An Exchangeable ERC20 token.
+
+\begin{gather}
+  S_{premier} = \{B, S, H, G\}
+  \intertext{Where:}
+  \begin{tabular}{c    l}
+    B: & \text{Buy Premier from Exchange}\\
+    S: & \text{Sell Premier to Exchange}\\
+    H: & \text{Hold Premier and do noting}\\
+    G: & \text{Gaming for Reward Token}
+\end{tabular}
+\end{gather}
+
+{\bfseries Reward}: An Exchangeable ERC721 token.
+
+\begin{gather}
+  S_{reward} = \{B, S, H, A\}
+  \intertext{Where:}
+  \begin{tabular}{c    l}
+    B: & \text{Buy Reward from Exchange}\\
+    S: & \text{Sell Reward to Exchange}\\
+    H: & \text{Hold Reward and do noting}\\
+    A: & \text{Auction Reward for Premier}\\
+\end{tabular}
+\end{gather}
+
 
 An infered Game is that for a game (S, f), all players $i$ shares same knowledge space about $S$, $u_{i}(s)$, and $s_{-i}$ on  Lamport Timestamp $\tau$.
 Unlike classic distributed system,
