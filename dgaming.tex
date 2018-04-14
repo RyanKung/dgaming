@@ -137,19 +137,6 @@ And the total supply $\mathbb{S}$ on lamport timestamp $t$ is:
   \mathbb{S}(t) \approx \sum_{i=0}^t E(t)
 \end{gather}
 
-The utility function of Selling $q$ Premier or Reward token on price $p$ with cost $c$ can be present as:
-
-\begin{gather}
-  u(q_i) = q_ip(q) - c_i(q_i)\\
-  p(q_i) = f(\mathbb{S}(t))
-\end{gather}
-
-Like cournot duopoly model, with a two player $\{1, 2\}$ gaming, we can directly give the nash equilibrim of $S$ is:
-
-\begin{gather}
-  \dot{q}_1 = \dot{q}_2 = \frac{1-c}{3}
-\end{gather}
-
 
 \section{Infered Game}
 
@@ -184,6 +171,8 @@ In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = 
 
 If $\delta$ for DGame $(18)$ is negligible, $(\sigma(G), \sigma(S))$ should be $(\frac{1}{2}, \frac{1}{2})$, otherwise player $i$ may known the action $-i$ does early, which may shifts the distribution to $(0, 1)$. And if most of players does same, it will fall into a zero-sum game trap. We introduce infered game for solving this problem.
 
+\subsection {STMonad and Lens}
+
 An infered Game is that for a game (S, f), all players $i$ shares same knowledge space about $S$, $u_{i}(s)$, and $s_{-i}$ on  Lamport Timestamp $\tau$.
 Unlike classic distributed system,
 Since some formalization of blockchain is based on the separation logic or $\pi calculis$ \cite{linearblockchain}, it can easily be modeled as a time step function, or a FRP issue which can be abstract as\cite{ElliottHudak97:Fran}, where blockchain Status can be also be abstract as $STMonad$ like MAKERDao\cite{dai}'s work:
@@ -203,12 +192,28 @@ data Lens a b = Lens
   }
 \end{lstlisting}
 
-A concrete example based on Solidity is, for each functions, if it's a pure function which means nor cost gas or cause side-effect on blokchain it can be infered based on ABI, it's a $view$, otherwise it's a $over$ which means you have to send a transaction to modified the status of chain. From $(2)$ we know that the distributed nash-equilibrim point is based on the transaction param $\delta$, thus we can assume that $Lens.view$, and $Lens.over$ is some paritial function based on $\delta$. We know that if $view$ is a pure function so that $\lim \delta$ is 0, which means if a client is well connected to the network, the $\delta$ is negligible for that, since for $over$ case, you can only shift $\delta$ by provide a high $tranasction\ price$ (gas price for ethereum).
+\subsection {Consistency of Blockchain}
 
+In solidity, a pure function which means nor cost gas or cause side-effect on blokchain it can be infered based on ABI is a $Lens.view$, otherwise it's a $Lens.over$ which means you have to send a transaction to modified the status of chain.
 
-So since classic distributed gaming may transfer the gaming from perfect information to imperfect. But if it's blockchain based, since $over$ is working as eventual consistency\cite{consis} but the status of blockchain can be seems as strong consistency\cite {Consistent}. On $view$ phase of gaming, when player $i$ make decision on $STMonad time_0$, the information of $Monat$ is perfect. For phase $over$, players may choose to pay high price as strategy to get more payoff, since it's based on consistency information of blockchain, we can also say that the $over$ phase is also perfect information gaming. So for a gaming we wished to have a fixed nash equilibrium point, it should be designed as all data in public and no private status.
+Consider the Gaming strategy $G$, on time $t$, all players i should know $I(t)$ as $Lens.view$, and calculate out the utility function of selling or mining with $q$ tokens with cost $c$:
 
-\section {Zero Knowledge Gaming}
+\begin{gather}
+  u(q_i) = q_ip(q) - c_i(q_i)\\
+  p(q_i) = f(\mathbb{S}(t))
+\end{gather}
+
+Like cournot duopoly model, with a two player $\{1, 2\}$ gaming, we can directly give the nash equilibrim of $S$ is:
+
+\begin{gather}
+  \dot{q}_1 = \dot{q}_2 = \frac{1-c}{3}
+\end{gather}
+
+And when $i$ trying do action, it's a $Lens.over$ which overwrite the status of contract storage. Based on the Infered system, $-i$ can access $S_i$, so as matrix presented in $18$, $-1$ will prefer to select $S$ which means higher payoff. Actually according to symmetry, when $i$ choose $S$, $-i$ will always choose $G$, so that $\sigma$ should be $(\frac{1}{2}, \frac{1}{2})$ which is as same as single-process gaming.
+
+So since classic distributed gaming may transfer the gaming from perfect information to imperfect. But if it's blockchain based, since $over$ is working as eventual consistency\cite{consis} but the status of blockchain can be seems as strong consistency\cite {Consistent}. On $view$ phase of gaming, when player $i$ make decision on $STMonad \  time_0$, the information of $Monat$ is perfect. For phase $over$, players may choose to pay high price as strategy to get more payoff, since it's based on consistency information of blockchain, we can also say that the $over$ phase is also perfect information gaming. So for a gaming we wished to have a fixed nash equilibrium point, it should be designed as all data in public and no private status.
+
+\subsection {Zero Knowledge Gaming}
 
 Such as we can formalize blockchain as a Monad (A monoid in the category of endofunctors), We can also describe abstractly the cryptology part of bitcoin as a cyclic subgroup of elliptic curve group over a primer finite field, which is also the principle of zk-SNARKs. There is an concrete implementation in our game for providing zero-knowledge proofing based on the infered system and hash algorithms, It's works like other blockchain implementation does \cite{zcash}. But what further more is, we tried developed algorithms based on Abstract Algebra Type and Isomorphism or Bijection mapping.
 
