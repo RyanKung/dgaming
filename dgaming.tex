@@ -1,5 +1,6 @@
 \documentclass[twocolumn]{article}
 \usepackage{color}
+\usepackage{multirow}  
 \usepackage{listings}
 \usepackage{float}
 \usepackage{amsfonts}
@@ -213,7 +214,7 @@ And when $i$ trying do action, it's a $Lens.over$ which overwrite the status of 
 
 So since classic distributed gaming may transfer the gaming from perfect information to imperfect. But if it's blockchain based, since $over$ is working as eventual consistency\cite{consis} but the status of blockchain can be seems as strong consistency\cite {Consistent}. On $view$ phase of gaming, when player $i$ make decision on $STMonad \  time_0$, the information of $Monat$ is perfect. For phase $over$, players may choose to pay high price as strategy to get more payoff, since it's based on consistency information of blockchain, we can also say that the $over$ phase is also perfect information gaming. So for a gaming we wished to have a fixed nash equilibrium point, it should be designed as all data in public and no private status.
 
-\subsection {Zero Knowledge Gaming}
+\subsection {Zero Knowledge Game}
 
 Such as we can formalize blockchain as a Monad (A monoid in the category of endofunctors), We can also describe abstractly the cryptology part of bitcoin as a cyclic subgroup of elliptic curve group over a primer finite field, which is also the principle of zk-SNARKs. There is an concrete implementation in our game for providing zero-knowledge proofing based on the infered system and hash algorithms, It's works like other blockchain implementation does \cite{zcash}. But what further more is, we tried developed algorithms based on Abstract Algebra Type and Isomorphism or Bijection mapping.
 
@@ -233,14 +234,35 @@ Where CF and ECG is Finite Field Cyclic Group and Elliptic Curve Group of Secp25
   C \neq X
 \end{gather}
 
-\section {Implementation}
+\section {Concrete}
 
-In the Go!hamster, the game we designed based on this work. We abstract the gaming activity as mining, and designed a series of numerical system, which can maintain the value of user actor by a fixed and well-designed nash equilibrium pointed. 
+We abstract the gaming activity as mining, and designed a series of numerical system, which can maintain the value of user actor by a fixed and well-designed nash equilibrium pointed.
+
 \subsection {Decentralized Marking}
 
 The ERC20 standard was extended with a built-in transparen exchange, which makes all gaming actor can be limited inside the blockchain or contract. And based on ERC721, we designed a reward system to keep player can get payoff if they act around the nash-eq point. For Exchangeable ERC20 and so on the Exchangeable ERC721, all matching stuffs is based on infered system, which means players can check the full depth of ticker for determining the best price they should pay for tokens.
 
 Functions of smart contract are separated into Functor and Monad. Functors are working based on pre-infered system, and Monads are based on infered system, which is actually presented a sequence of status.
+
+We support below ABIs:
+
+\begin{gather}
+\begin{tabular}{l|l|l}
+  function & type & event\\
+  \hline
+  checkBidTicker & \multirow{4}*{Lens.view} & \multirow{4}*{False} \\
+  checkAskTicker& \\
+  matchBid & \\
+  matchAsk &\\
+  \hline
+  ask & \multirow{6}*{Lens.over} & \multirow{6}*{True} \\
+  bid & \\
+  fillBid & \\
+  fillAsk &\\
+  cancelAsk & \\
+  cancelBid & \\
+\end{tabular}
+\end{gather}
 
 \subsection {Infered Token Balance}
 
