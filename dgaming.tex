@@ -25,9 +25,12 @@ Since the introduction of Ethereum on 2014\cite{ethereum}, It brought many DApps
 
 In this paper, we studied and discussed how should a distributed game works on blockchain based distributed system. First, we discussed distributed nash equilibrium problem on certain condition, then we introduced an infered based system based on an abstraction which formalize blockchain with STMonad and Lens application, further, we discussed how to composed infered system with zero-knowledge proof for game refining.
 
-\section{Distributed Nash-Eq}
+\section{Distributed Gaming}
 
-Like traditional Gaming on game theory, we defined DGaming as a series of Gaming Behaviors and Strategis which is Distributed. With Lamport's defination on 1978\cite{time-clocks-ordering-events-distributed-system}, A Gaming is Distributed if the message transaction delay is not negligible compared to the time between event in classic gaming behavior. The issues in traditional gaming theory may easily lead us run into trouble if it's distributed, such as nash equilibrium simulation or prisoner's dilemma problem.
+
+Like traditional Gaming on game theory, we defined DGaming as a series of Gaming Behaviors and Strategis which is Distributed. With Lamport's defination on 1978\cite{time-clocks-ordering-events-distributed-system}, A Gaming is Distributed if the message transaction delay is not negligible compared to the time between event in classic gaming behavior.
+\subsection{Nash Equilibrium Seeking}
+The issues in traditional gaming theory may easily lead us run into trouble if it's distributed, such as nash equilibrium simulation or prisoner's dilemma problem.
 
 On classic Nash Equilibrium, we seeking out the nash-eq point by analyze it with action matrix, and proof that for each strategy on game $(S, f)$, and got A strategy profile which is Nash Equilibrium. But on distributed case, the issue is that the event of strategy is not effect immediately, nonnegligible delay of transaction on system may cause N-Eq point out of expectation.
 
@@ -76,38 +79,65 @@ On this game, players can choose from strategy space ${Wait, Action}$, and as wh
 
 T$(\dot{x}^*, 1_N\oplus x^*)$, where $x^*$ presents nash equilibrium. There exist Some seeking work on it with paritially coupled payoff method\cite{8029164}, or Communication Topologies\cite{8093754} building on certain conditions and developed on the discrete-time stochastic algorithm\cite{928588} which the players are supposed to be capable of communicating with each other via an undirected and connected communication graph\cite{7888532}. 
 
-\section{Infered Game}
-
-In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, all player $i$ can well access actions of $-i$. We denoted $u_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $=sigma(\delta, \dot{x})$.
-
+\subsection{Game Formulation}
 In the game we designed, there are two tokens:
 
-{\bfseries Premier}: An Exchangeable ERC20 token.
+1. {\bfseries Premier}: An Exchangeable ERC20 token, which can exchange with Ether and have a dynamic inflation rate $\Delta \mathbb{S}$, based on total number of player $I$ on lamport timestamp $t$:
+
+\begin{gather}
+  \Delta \mathbb{S}(t) = f \circ I (t) \\
+  \Delta \mathbb{S}(t) > \Delta \mathbb{S}(t') \iff I(t) < I(t')\\
+  \Delta \mathbb{S}(t) = \Delta \mathbb{S}(t') \iff I(t) = I(t')\\
+  \Delta \mathbb{S}(t) < \Delta \mathbb{S}(t') \iff I(t) > I(t')
+\end{gather}
+
+And the total supply $\mathbb{S}$ on lamport timestamp $t$ is:
+
+\begin{gather}
+  \mathbb{S}(t) = \sum_{i=0}^t f \circ I(t)
+\end{gather}
+
+For Premier Token, the strategy space is:
 
 \begin{gather}
   S_{premier} = \{B, S, H, G\}
   \intertext{Where:}
   \begin{tabular}{c    l}
-    B: & \text{Buy Premier from Exchange}\\
-    S: & \text{Sell Premier to Exchange}\\
-    H: & \text{Hold Premier and do noting}\\
-    G: & \text{Gaming for Reward Token}
-\end{tabular}
+    B:= & \text{Buy Premier from Exchange}\\
+    S:= & \text{Sell Premier to Exchange}\\
+    H:= & \text{Hold Premier and do noting}\\
+    G:= & \text{Gaming for Reward Token}
+\end{tabular}\nonumber
 \end{gather}
 
-{\bfseries Reward}: An Exchangeable ERC721 token.
+2. {\bfseries Reward}: An Exchangeable ERC721 token which is delegated with premier by strategy $G$. When players do Gaming, there is a probability $P$ for reward getting, based on total number of player $I$ who do game. The expected value of Reward inflation rate is:
 
 \begin{gather}
-  S_{reward} = \{B, S, H, A\}
-  \intertext{Where:}
-  \begin{tabular}{c    l}
-    B: & \text{Buy Reward from Exchange}\\
-    S: & \text{Sell Reward to Exchange}\\
-    H: & \text{Hold Reward and do noting}\\
-    A: & \text{Auction Reward for Premier}\\
-\end{tabular}
+  E(t) = I(t) \cdot P \circ I (t) \\
+  P(t) > P(t') \iff I(t) < I(t')\\
+  P(t) = P(t') \iff I(t) = I(t')\\
+  P(t) < P(t') \iff I(t) > I(t')
 \end{gather}
 
+
+
+For Premier Token, the strategy space is:
+
+\begin{gather}
+  S_{reward} = \{B, S, H\}
+  \intertext{Where:}
+  \begin{tabular}{c    l}
+    B:= & \text{Buy Reward from Exchange with Premier}\\
+    S:= & \text{Sell Reward to Exchange for Premier}\\
+    H:= & \text{Hold Reward and do noting}\\
+\end{tabular}\nonumber
+\end{gather}
+
+
+
+\section{Infered Game}
+
+In this paper, we considered a game $(S, f)$ with a set of player $\mathbb{N} = {1, 2, ..., N}$, under a distributed network which has nonnegligible delay $\mathbb{\delta}$, all player $i$ can well access actions of $-i$. We denoted $u_i(x)$ as the payoff function of player $i$, where $X = [x_1, x_2, ..., x_n]^T$, $x_i \in S$ is action of player i. And we define a mix strategy function $\sigma = f(\delta, s)$ which is means how the information is prefect for $s_i$. And formulated the mix strategy function based on nonnegligible transaction as $=sigma(\delta, \dot{x})$.
 
 An infered Game is that for a game (S, f), all players $i$ shares same knowledge space about $S$, $u_{i}(s)$, and $s_{-i}$ on  Lamport Timestamp $\tau$.
 Unlike classic distributed system,
