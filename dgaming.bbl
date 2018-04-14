@@ -43,6 +43,12 @@ Mikael~Brockman Nikolai~Mushegian, Daniel~Brockman.
 \newblock Reference implementation of the decentralized dai stablecoin issuance
   system, 2 2018.
 
+\bibitem{928588}
+S.~S. Saab.
+\newblock A discrete-time stochastic learning control algorithm.
+\newblock {\em IEEE Transactions on Automatic Control}, 46(6):877--887, June
+  2001.
+
 \bibitem{8029164}
 L.~Wang, S.~Liang, and Y.~Hong.
 \newblock Discrete-time algorithm for distributed nash equilibrium seeking of a

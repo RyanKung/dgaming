@@ -11,7 +11,6 @@ Warning--entry type for "klefki" isn't style-file defined
 --line 114 of file dgaming.bib
 Warning--entry type for "bitcoin" isn't style-file defined
 --line 120 of file dgaming.bib
-Warning--I didn't find a database entry for "mrx05"
 Warning--I didn't find a database entry for "Consistent"
 Warning--to sort, need author or key in linearblockchain
 Warning--to sort, need author or key in lens
@@ -26,45 +25,45 @@ Warning--empty year in consis
 Warning--empty journal in zcash
 Warning--empty year in zcash
 Warning--empty journal in time-clocks-ordering-events-distributed-system
-You've used 13 entries,
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            554 strings with 5449 characters,
-and the built_in function-call counts, 3362 in all, are:
-= -- 308
-> -- 108
+            560 strings with 5527 characters,
+and the built_in function-call counts, 3653 in all, are:
+= -- 337
+> -- 115
 < -- 2
-+ -- 46
-- -- 32
-* -- 194
-:= -- 524
-add.period$ -- 29
-call.type$ -- 13
-change.case$ -- 55
++ -- 50
+- -- 34
+* -- 217
+:= -- 572
+add.period$ -- 32
+call.type$ -- 14
+change.case$ -- 59
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 151
-empty$ -- 319
-format.name$ -- 32
-if$ -- 726
+cite$ -- 27
+duplicate$ -- 162
+empty$ -- 346
+format.name$ -- 34
+if$ -- 787
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 9
-newline$ -- 58
-num.names$ -- 22
-pop$ -- 96
+int.to.str$ -- 14
+missing$ -- 10
+newline$ -- 63
+num.names$ -- 24
+pop$ -- 98
 preamble$ -- 1
-purify$ -- 42
+purify$ -- 45
 quote$ -- 0
-skip$ -- 128
+skip$ -- 135
 stack$ -- 0
-substring$ -- 177
-swap$ -- 32
+substring$ -- 204
+swap$ -- 33
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
+type$ -- 56
 warning$ -- 13
-while$ -- 28
-width$ -- 15
-write$ -- 109
-(There were 19 warnings)
+while$ -- 31
+width$ -- 16
+write$ -- 120
+(There were 18 warnings)
