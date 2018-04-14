@@ -238,7 +238,7 @@ Where CF and ECG is Finite Field Cyclic Group and Elliptic Curve Group of Secp25
 
 We abstract the gaming activity as mining, and designed a series of numerical system, which can maintain the value of user actor by a fixed and well-designed nash equilibrium pointed.
 
-\subsection {Decentralized Marking}
+\subsection {Infered based Token}
 
 The ERC20 standard was extended with a built-in transparen exchange, which makes all gaming actor can be limited inside the blockchain or contract. And based on ERC721, we designed a reward system to keep player can get payoff if they act around the nash-eq point. For Exchangeable ERC20 and so on the Exchangeable ERC721, all matching stuffs is based on infered system, which means players can check the full depth of ticker for determining the best price they should pay for tokens.
 
@@ -264,8 +264,6 @@ We support below ABIs:
 \end{tabular}
 \end{gather}
 
-\subsection {Infered Token Balance}
-
 On out implementation of Gaming Token, we designed an infered based auto expended rate. The expand rate is based on $I(t)$ and $time$ of blockchain, which is bounded on the nash equilibrim of what the token price should be during the game processing.
 
 In contract PremierToken.sol, we developed a functional modifier for infered system, which works like a lazy evaluation. Above on ERC20 standard, there is two kind of balance:
@@ -278,14 +276,20 @@ Infered balance is $Lens.view$ which implement a measurement of the real balance
 
 Real balance is also $Lens.view$ which is just returning real the balance in storage which is excluded infered value.
 
-\subsection {Gaming Versus Mining}
+Standard function transfer, transferfrom and approve are all modified by Infered modifier.
 
-The most obviously case of nash-eq case on blockchain world is bitcoin mining\cite{bitcoin}, we can easily build an game matrix model on bitcoin mining behavior, the relationship is between market force, difficult rate, and hash rate. And in game Go!hamster, actors can pay game token for wining reward, more token they paid, higher rewarding rate they got, which is working as a simulation of how bitcoin mining works.
+\subsection {Non-fungible Token}
+
+The most obviously case of nash-eq case on blockchain world is bitcoin mining\cite{bitcoin}, we can easily build an game matrix model on bitcoin mining behavior, the relationship is between market force, difficult rate, and hash rate. And in game, players can pay game token for wining reward, more token they paid, higher rewarding rate they got, which is working as a simulation of how bitcoin mining works. The Reward token is a ERC720 token, which is also mapping to IPFS hash address. Like Premier Token, Reward token also has it's expand rate which is based on $I(t)$ and $t$. When gaming, reward token can be immediately infered by the context like tx Hash, sender address or blocktime of blockchain Premier token paid.
+
+For increasing value of NFT Reward Token, we designed several artwork for each logic layer of token which is storing on IPFS, which can be composed in front end of DApps for print and Zero-knowledge Transfer.
+
+A Zero-knowledge Transfer is a transfer with zero context, which is simply developed on freeze and unfreeze strategy. When user transfer Reward Token with Zero-knowledge Transfer, the token id will be freezed on contract for a unique untraceable hashid thus receiver can redeem the hashid that has no idea where the Token is come from.
+
 
 \section {Conclusion}
 
-Addressed to the strong consistency property of blockchain, A game can have a certain nash equilibrium point, if the side-effects and pure-functions are in separation. Though there is alot of limitation on Ethereum and solidity itself, a real-time game, like RPG or Action game can be still build on a monad based and zero-knowledge based infered system.
-
+Addressed to the strong consistency property of blockchain, A game can have a certain nash equilibrium point, if the side-effects and pure-functions are in separation. 
 \bibliographystyle{plain}
 \bibliography{dgaming}
 \end{document}
