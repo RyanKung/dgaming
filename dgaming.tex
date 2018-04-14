@@ -266,7 +266,17 @@ We support below ABIs:
 
 \subsection {Infered Token Balance}
 
-On out implementation of Gaming Token, we designed an infered based auto expended rate. The expended rate is based on $\delta$ and $time$ of blockchain, which is bounded on the nash equilibrim of what the token price should be during the game processing.
+On out implementation of Gaming Token, we designed an infered based auto expended rate. The expand rate is based on $I(t)$ and $time$ of blockchain, which is bounded on the nash equilibrim of what the token price should be during the game processing.
+
+In contract PremierToken.sol, we developed a functional modifier for infered system, which works like a lazy evaluation. Above on ERC20 standard, there is two kind of balance:
+
+1) infered balance
+
+Infered balance is $Lens.view$ which implement a measurement of the real balance should be. If a function is $Lens.view$, it will check infered balance, else it will evaluation the infer modifier and setup infered value to storage of contract.
+
+2) real balance
+
+Real balance is also $Lens.view$ which is just returning real the balance in storage which is excluded infered value.
 
 \subsection {Gaming Versus Mining}
 
